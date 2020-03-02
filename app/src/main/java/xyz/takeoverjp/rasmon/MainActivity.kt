@@ -5,14 +5,23 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
+
 
 class MainActivity : AppCompatActivity() {
     companion object {
         /** ID for the runtime permission dialog */
         private const val OVERLAY_PERMISSION_REQUEST_CODE = 1
     }
+
+    private val spinnerItems =
+        arrayOf("BottomRight", "BottomLeft", "TopRight", "TopLeft")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +34,23 @@ class MainActivity : AppCompatActivity() {
             setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) OverlayService.start(this@MainActivity)
                 else OverlayService.stop(this@MainActivity)
+            }
+        }
+
+        val spinner = findViewById<Spinner>(R.id.positionSpinner)
+        val adapter = ArrayAdapter(this,
+                    android.R.layout.simple_spinner_item, spinnerItems)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.setAdapter(adapter)
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?, position: Int, id: Long
+            ) {
+                Log.d("rasmon", "item=" + spinner.selectedItem)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }
     }

@@ -2,4 +2,6 @@
     <string name="app_name">RASMON</string>
     <string name="cpu_title">CPU</string>
     <string name="mem_title">MEM</string>
+    <string name="config_monitor">Monitor</string>
+    <string name="config_position">Position</string>
 </resources>
