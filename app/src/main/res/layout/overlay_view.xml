@@ -1,46 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xyz.takeoverjp.rasmon.OverlayView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<xyz.takeoverjp.rasmon.OverlayView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <LinearLayout
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="#A9FF9800"
-        android:gravity="bottom|end"
-        android:orientation="vertical">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/mainTitleView"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
-            android:text="@string/title" />
+            android:background="#99FFFF00"
+            android:gravity="bottom|end"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/cpuUsageTitleView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/cpu_title" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/cpuUsageRankView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/cpuUsageTitleView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cpu_title" />
 
-        <TextView
-            android:id="@+id/memUsageTitleView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/mem_title" />
+                <TextView
+                    android:id="@+id/cpuTotalView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/memUsageRankView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <ProgressBar
+                android:id="@+id/cpuBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:min="0"
+                android:progress="50"
+                android:progressTint="#FF0000" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/cpuUsageRankView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:typeface="monospace" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/memUsageTitleView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mem_title" />
+
+                <TextView
+                    android:id="@+id/memTotalView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:textAlignment="viewEnd" />
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/memBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:min="0"
+                android:progress="50"
+                android:progressTint="#FF0000" />
+
+            <TextView
+                android:id="@+id/memUsageRankView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:typeface="monospace" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </xyz.takeoverjp.rasmon.OverlayView>
