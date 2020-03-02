@@ -32,8 +32,17 @@ class MainActivity : AppCompatActivity() {
         findViewById<ToggleButton>(R.id.toggle_button).apply {
             isChecked = OverlayService.isActive
             setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) OverlayService.start(this@MainActivity)
-                else OverlayService.stop(this@MainActivity)
+                val prefs = getSharedPreferences("Config", AppCompatActivity.MODE_PRIVATE)
+                val e = prefs.edit()
+                if (isChecked) {
+                    e.putBoolean("AUTO_START", true)
+                    e.apply()
+                    OverlayService.start(this@MainActivity)
+                } else {
+                    e.putBoolean("AUTO_START", false)
+                    e.apply()
+                    OverlayService.stop(this@MainActivity)
+                }
             }
         }
 

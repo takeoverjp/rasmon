@@ -18,7 +18,7 @@ class OverlayService : Service() {
             val intent = Intent(context, OverlayService::class.java).apply {
                 action = ACTION_SHOW
             }
-            context.startService(intent)
+            context.startForegroundService(intent)
         }
 
         fun stop(context: Context) {
