@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">RASMON settings</string>
-    <string name="title">RASMON</string>
-    <string name="cpu_title">CPU Usage</string>
-    <string name="mem_title">Mem Usage</string>
+    <string name="app_name">RASMON</string>
+    <string name="cpu_title">CPU</string>
+    <string name="mem_title">MEM</string>
 </resources>
